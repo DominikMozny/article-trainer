@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class App extends Component {
+class AnswerForm extends Component {
     render() {
         return (
             <div>
@@ -10,6 +10,14 @@ class App extends Component {
                     <button onClick={() => alert('Right!')}>la</button>
                 </div>
             </div>
+        );
+    }
+}
+
+class App extends Component {
+    render() {
+        return (
+            <AnswerForm/>
         );
     }
 }
