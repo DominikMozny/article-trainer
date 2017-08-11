@@ -19,12 +19,17 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            word: {substantive: 'voiture', article: 'la'},
+            word1: {substantive: 'voiture', article: 'la'},
+            word2: {substantive: 'oiseau', article: 'le'},
         };
     }
     render() {
         return (
-            <AnswerForm word={this.state.word}/>
+            <div>
+                <AnswerForm word={this.state.word1}/>
+                <AnswerForm word={this.state.word2}/>
+            </div>
+
         );
     }
 }
