@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 
 class AnswerForm extends Component {
+    constructor() {
+        super();
+        this.state = {
+            word: 'voiture',
+        };
+    }
     render() {
         return (
             <div>
-                <div>voiture</div>
+                <div>{this.state.word}</div>
                 <div>
                     <button onClick={() => alert('Wrong!')}>le</button>
                     <button onClick={() => alert('Right!')}>la</button>
