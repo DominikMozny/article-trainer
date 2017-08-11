@@ -21,15 +21,23 @@ class App extends Component {
         this.state = {
             words: [
                 {substantive: 'voiture', article: 'la'},
-                {substantive: 'oiseau', article: 'le'}
+                {substantive: 'oiseau', article: 'le'},
+                {substantive: 'table', article: 'la'}
             ]
         };
     }
+
+    allForms(words) {
+        const listForms = words.map((word) =>
+            <AnswerForm word={word} />
+        );
+        return listForms;
+    }
+
     render() {
         return (
             <div>
-                <AnswerForm word={this.state.words[0]}/>
-                <AnswerForm word={this.state.words[1]}/>
+                {this.allForms(this.state.words)}
             </div>
 
         );
