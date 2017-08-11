@@ -7,8 +7,8 @@ class AnswerForm extends Component {
             <div>
                 <div>{this.props.word.substantive}</div>
                 <div>
-                    <button onClick={() => alert('Wrong!')}>le</button>
-                    <button onClick={() => alert('Right!')}>la</button>
+                    <button onClick={() => popupAnswer(this.props.word.article, 'le')}>le</button>
+                    <button onClick={() => popupAnswer(this.props.word.article, 'la')}>la</button>
                 </div>
             </div>
         );
@@ -27,6 +27,14 @@ class App extends Component {
             <AnswerForm word={this.state.word}/>
         );
     }
+}
+
+function popupAnswer(answer, rightAnswer) {
+    if(answer === rightAnswer) {
+        alert('Right!');
+        return;
+    }
+    alert('Wrong :(');
 }
 
 
