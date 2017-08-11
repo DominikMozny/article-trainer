@@ -19,15 +19,17 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            word1: {substantive: 'voiture', article: 'la'},
-            word2: {substantive: 'oiseau', article: 'le'},
+            words: [
+                {substantive: 'voiture', article: 'la'},
+                {substantive: 'oiseau', article: 'le'}
+            ]
         };
     }
     render() {
         return (
             <div>
-                <AnswerForm word={this.state.word1}/>
-                <AnswerForm word={this.state.word2}/>
+                <AnswerForm word={this.state.words[0]}/>
+                <AnswerForm word={this.state.words[1]}/>
             </div>
 
         );
