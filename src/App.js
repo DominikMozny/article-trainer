@@ -28,10 +28,9 @@ class App extends Component {
     }
 
     allForms(words) {
-        const listForms = words.map((word) =>
-            <AnswerForm word={word} />
+        return words.map((word) =>
+            <AnswerForm word={word}/>
         );
-        return listForms;
     }
 
     render() {
