@@ -1,22 +1,16 @@
 import React from 'react';
 
-const Answers = (props) => (
-    props.answers.map((answer) =>
-        <button>{answer}</button>)
-)
-
-function allAnswers(words) {
-    const listForms = words.map((word) =>
-        <div> {word} </div>
-    );
-    return listForms;
+const allAnswers = (words, onClickAnswerButton) => {
+    return words.map((word) =>
+        <button onClick={() => onClickAnswerButton(word)}> {word} </button>
+    )
 }
 
-
-const WordForm = ({jsonWord}) => (
+const WordForm = ({jsonWord, onClickAnswerButton}) => (
     <div>
-        <div>{jsonWord.word}</div>
-        {allAnswers(jsonWord.answers)}
+        {jsonWord.word}
+        {allAnswers(jsonWord.answers, onClickAnswerButton)}
+        
     </div>
 )
 

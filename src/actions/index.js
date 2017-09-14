@@ -19,3 +19,22 @@ export const fetchMessage = () => dispatch => {
         })
         .catch(e => dispatch(showMessage(e.toString())))
 }
+
+export const sendAnswer = (word) => dispatch => {
+    fetch('http://localhost:8080/postAnswer', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            word: word,
+            answer: 'myAnswer',
+        })
+    })
+        .then(response => response.json())
+        .then(json => {
+            alert(json.word)
+        })
+        .catch(e => alert("problem huston"))
+}
