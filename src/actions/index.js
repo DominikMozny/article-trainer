@@ -34,7 +34,7 @@ export const sendAnswer = (questionId, answer) => dispatch => {
     })
         .then(response => response.json())
         .then(json => {
-            alert(json.word)
+            alert(json.result)
         })
         .catch(e => alert("problem huston"))
 }
