@@ -41,16 +41,16 @@ export const fetchMessage = () => dispatch => {
         .catch(e => dispatch(showMessage(e.toString())))
 }
 
-export const sendAnswer = (word) => dispatch => {
-    fetch('http://localhost:8080/postAnswer', {
+export const sendAnswer = (questionId, answer) => dispatch => {
+    fetch('http://localhost:8080/sendAnswer', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            word: word,
-            answer: 'myAnswer',
+            questionId: questionId,
+            answer: answer,
         })
     })
         .then(response => response.json())
