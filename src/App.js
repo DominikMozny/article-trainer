@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import RemoteMsgRedux from "./containers/RemoteMsgRedux";
-import WordFormRedux from "./containers/WordFormRedux";
+import WordFormRedux from "./containers/QuestionFormRedux";
 
 class App extends Component {
     render() {

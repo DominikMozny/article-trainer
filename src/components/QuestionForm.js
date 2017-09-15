@@ -6,12 +6,12 @@ const allAnswers = (words, onClickAnswerButton) => {
     )
 }
 
-const WordForm = ({jsonWord, onClickAnswerButton}) => (
+const QuestionForm = ({jsonWord, onClickAnswerButton}) => (
     <div>
         {jsonWord.word}
         {allAnswers(jsonWord.answers, onClickAnswerButton)}
-        
+
     </div>
 )
 
-export default WordForm
+export default QuestionForm
