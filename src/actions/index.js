@@ -25,7 +25,7 @@ export const fetchQuestionsToBeAnswered = () => dispatch => {
     fetch('http://localhost:8080/questions')
         .then(response => response.json())
         .then(json => {
-            dispatch(addQuestionToBeAnswered(json.questions[0]))
+            json.questions.map((q) => dispatch(addQuestionToBeAnswered(q)))
         })
         .catch(e => alert(e.toString()))
 }
