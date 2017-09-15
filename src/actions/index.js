@@ -8,6 +8,19 @@ export const refreshWord = (jsonWord) => ({
     jsonWord
 })
 
+export const addQuestionToBeAnswered = (questionToBeAnswered) => ({
+    type: 'ADD_QUESTION_TO_BE_ANSWERED',
+    id: questionToBeAnswered.id,
+    question: questionToBeAnswered.question,
+    answers: questionToBeAnswered.answers
+})
+
+export const addAnsweredQuestion = (answeredQuestion) => ({
+    type: 'ADD_ANSWERED_QUESTION',
+    id: answeredQuestion.id,
+    answer: answeredQuestion.answer
+})
+
 
 export const fetchMessage = () => dispatch => {
     dispatch(showMessage('Loading'))
