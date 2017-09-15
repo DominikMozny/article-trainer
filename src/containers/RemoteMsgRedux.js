@@ -1,13 +1,13 @@
 import {connect} from 'react-redux'
 import RemoteMsg from "../components/RemoteMsg";
-import {fetchMessage} from "../actions/index";
+import {fetchQuestionsToBeAnswered} from "../actions/index";
 
 const mapStateToProps = (state) => ({
     message: state.message
 })
 
 const mapDispatchToProps = {
-    onClickLoadButton: fetchMessage
+    onClickLoadButton: fetchQuestionsToBeAnswered
 }
 
 const RemoteMsgRedux = connect(mapStateToProps, mapDispatchToProps)(RemoteMsg)

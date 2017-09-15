@@ -21,6 +21,14 @@ export const addAnsweredQuestion = (answeredQuestion) => ({
     answer: answeredQuestion.answer
 })
 
+export const fetchQuestionsToBeAnswered = () => dispatch => {
+    fetch('http://localhost:8080/questions')
+        .then(response => response.json())
+        .then(json => {
+            dispatch(addQuestionToBeAnswered(json.questions[0]))
+        })
+        .catch(e => alert(e.toString()))
+}
 
 export const fetchMessage = () => dispatch => {
     dispatch(showMessage('Loading'))
