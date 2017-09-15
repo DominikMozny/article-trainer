@@ -1,13 +1,3 @@
-export const showMessage = (message) => ({
-    type: 'DISPLAY_MESSAGE',
-    message
-})
-
-export const refreshWord = (jsonWord) => ({
-    type: 'REFRESH_WORD',
-    jsonWord
-})
-
 export const addQuestionToBeAnswered = (questionToBeAnswered) => ({
     type: 'ADD_QUESTION_TO_BE_ANSWERED',
     id: questionToBeAnswered.id,
@@ -28,17 +18,6 @@ export const fetchQuestionsToBeAnswered = () => dispatch => {
             json.questions.map((q) => dispatch(addQuestionToBeAnswered(q)))
         })
         .catch(e => alert(e.toString()))
-}
-
-export const fetchMessage = () => dispatch => {
-    dispatch(showMessage('Loading'))
-    fetch('http://localhost:8080/getWord')
-        .then(response => response.json())
-        .then(json => {
-            dispatch(showMessage(JSON.stringify(json)))
-            dispatch(refreshWord(json))
-        })
-        .catch(e => dispatch(showMessage(e.toString())))
 }
 
 export const sendAnswer = (questionId, answer) => dispatch => {

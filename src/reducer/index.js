@@ -1,27 +1,5 @@
 import {combineReducers} from 'redux'
 
-const message = (state = "No message obtained", action) => {
-    switch (action.type) {
-        case 'DISPLAY_MESSAGE':
-            return action.message
-        default:
-            return state
-    }
-}
-
-const jsonWord = (state = {
-                      word: "no word",
-                      answers: ["inv1", "inv2"]
-                  },
-                  action) => {
-    switch (action.type) {
-        case 'REFRESH_WORD':
-            return action.jsonWord
-        default:
-            return state
-    }
-}
-
 export const answeredQuestions = (state = [], action) => {
     switch (action.type) {
         case 'ADD_ANSWERED_QUESTION':
@@ -54,6 +32,6 @@ export const questionsToBeAnswered = (state = [], action) => {
 }
 
 
-const reducers = combineReducers({message, jsonWord, answeredQuestions, questionsToBeAnswered})
+const reducers = combineReducers({answeredQuestions, questionsToBeAnswered})
 
 export default reducers
