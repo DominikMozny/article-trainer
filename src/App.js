@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import './App.css';
 import QuestionsAndAnswersRedux from "./containers/QuestionsAndAnswersRedux";
-import {fetchQuestionsToBeAnswered} from "./actions/index";
+import {fetchquestions} from "./actions/index";
 
 class App extends Component {
     componentDidMount() {
-        this.props.dispatch(fetchQuestionsToBeAnswered())
+        this.props.dispatch(fetchquestions())
     }
 
     render() {

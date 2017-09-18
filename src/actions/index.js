@@ -1,21 +1,21 @@
-export const addQuestionToBeAnswered = (questionToBeAnswered) => ({
-    type: 'ADD_QUESTION_TO_BE_ANSWERED',
-    id: questionToBeAnswered.id,
-    question: questionToBeAnswered.question,
-    answers: questionToBeAnswered.answers
+export const addQuestion = (question) => ({
+    type: 'ADD_QUESTION',
+    id: question.id,
+    question: question.question,
+    answers: question.answers
 })
 
-export const addAnsweredQuestion = (answeredQuestion) => ({
-    type: 'ADD_ANSWERED_QUESTION',
+export const addAnswer = (answeredQuestion) => ({
+    type: 'ADD_ANSWER',
     id: answeredQuestion.id,
     answer: answeredQuestion.answer
 })
 
-export const fetchQuestionsToBeAnswered = () => dispatch => {
+export const fetchquestions = () => dispatch => {
     fetch('http://localhost:8080/questions')
         .then(response => response.json())
         .then(json => {
-            json.questions.map((q) => dispatch(addQuestionToBeAnswered(q)))
+            json.questions.map((q) => dispatch(addQuestion(q)))
         })
         .catch(e => alert(e.toString()))
 }

@@ -3,8 +3,8 @@ import QuestionsAndAnswers from "../components/QuestionsAndAnswers";
 import {sendAnswer} from "../actions/index";
 
 const mapStateToProps = (state) => ({
-    answeredQuestions: state.answeredQuestions,
-    questionsToBeAnswered: state.questionsToBeAnswered
+    answers: state.answers,
+    questions: state.questions
 })
 
 const mapDispatchToProps = {

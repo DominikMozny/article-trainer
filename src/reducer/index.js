@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux'
 
-export const answeredQuestions = (state = [], action) => {
+export const answers = (state = [], action) => {
     switch (action.type) {
-        case 'ADD_ANSWERED_QUESTION':
+        case 'ADD_ANSWER':
             return [
                 ...state,
                 {
@@ -15,9 +15,9 @@ export const answeredQuestions = (state = [], action) => {
     }
 }
 
-export const questionsToBeAnswered = (state = [], action) => {
+export const questions = (state = [], action) => {
     switch (action.type) {
-        case 'ADD_QUESTION_TO_BE_ANSWERED':
+        case 'ADD_QUESTION':
             return [
                 ...state,
                 {
@@ -32,6 +32,6 @@ export const questionsToBeAnswered = (state = [], action) => {
 }
 
 
-const reducers = combineReducers({answeredQuestions, questionsToBeAnswered})
+const reducers = combineReducers({answers, questions})
 
 export default reducers
