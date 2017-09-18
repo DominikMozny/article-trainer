@@ -6,8 +6,8 @@ export const answers = (state = [], action) => {
             return [
                 ...state,
                 {
-                    id: action.id,
-                    answer: action.answer
+                    questionId: action.questionId,
+                    result: action.result
                 }
             ]
         default:

@@ -5,10 +5,10 @@ export const addQuestion = (question) => ({
     answers: question.answers
 })
 
-export const addAnswer = (answeredQuestion) => ({
+export const addAnswer = (answer) => ({
     type: 'ADD_ANSWER',
-    id: answeredQuestion.id,
-    answer: answeredQuestion.answer
+    questionId: answer.questionId,
+    result: answer.result
 })
 
 export const fetchquestions = () => dispatch => {
@@ -34,7 +34,7 @@ export const sendAnswer = (questionId, answer) => dispatch => {
     })
         .then(response => response.json())
         .then(json => {
-            alert(json.result)
+            dispatch(addAnswer(json))
         })
-        .catch(e => alert("problem huston"))
+        .catch(e => alert("Problem huston"))
 }

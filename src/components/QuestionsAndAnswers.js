@@ -1,16 +1,27 @@
 import React from 'react';
 import Question from "./Question";
+import Answer from "./Answer";
 
-const getQuestions = (questions, onClickAnswerButton) => {
+const getAnswer = (answer) => {
+    if(answer) {
+        return <Answer answer={answer}/>
+    }
+}
+
+const getQuestionsAndAnswers = (questions, answers, onClickAnswerButton) => {
+    const answerMap = new Map(answers.map((i) => [i.questionId, {questionId: i.questionId, result: i.result}]))
     return questions.map((question) =>
-        <Question question={question}
+        <div >
+            <Question question={question}
                               onClickAnswerButton={onClickAnswerButton}/>
+            {getAnswer(answerMap.get(question.id))}
+        </div>
     )
 }
 
 const QuestionsAndAnswers = ({questions, answers, onClickAnswerButton}) => (
     <div>
-        {getQuestions(questions, onClickAnswerButton)}
+        {getQuestionsAndAnswers(questions, answers, onClickAnswerButton)}
     </div>
 )
 

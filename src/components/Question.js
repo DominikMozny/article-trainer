@@ -7,7 +7,7 @@ const answers = (question, onClickAnswerButton) => {
 }
 
 const Question = ({question, onClickAnswerButton}) => (
-    <div>
+    <div style={{display: 'inline-block'}}>
         {question.question} {answers(question, onClickAnswerButton)}
     </div>
 )
