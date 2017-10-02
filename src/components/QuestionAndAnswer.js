@@ -1,26 +1,31 @@
 import React from 'react';
 
-const answers = (question, onClickAnswerButton) => {
-    return question.answers.map((answer) =>
-        <button onClick={() => onClickAnswerButton(question.id, answer)}>{answer}</button>
+const answers = (answer, question, onClickAnswerButton) => {
+    return answer ? null : question.answers.map((answer) =>
+        <div style={{display: 'inline-block'}}>
+            <button onClick={() => onClickAnswerButton(question.id, answer)}>{answer}</button>
+        </div>
     )
 }
 
-const getAnswer = (answer) => {
+const getBgColor = (answer) => {
     if (answer) {
-        return <div style={{display: 'inline-block'}}>
-            {answer.result.toString()}
-        </div>
+        if (answer.result) {
+            return 'LimeGreen';
+        } else {
+            return 'OrangeRed';
+        }
     }
+    return 'white';
 }
 
 const QuestionAndAnswer = ({question, answer, onClickAnswerButton}) => (
     <div>
-        <div style={{display: 'inline-block'}}>
-            {question.question} {answers(question, onClickAnswerButton)}
+        <div className="question" style={{display: 'inline-block', backgroundColor: getBgColor(answer)}}>
+            {question.question}
         </div>
         <div style={{display: 'inline-block'}}>
-            {getAnswer(answer)}
+            {answers(answer, question, onClickAnswerButton)}
         </div>
     </div>
 )
