@@ -10,6 +10,10 @@ export const answers = (state = [], action) => {
                     result: action.result
                 }
             ]
+        case 'REMOVE_ANSWER':
+            return [
+                ...state.filter(answer => answer.questionId != action.questionId),
+            ]
         default:
             return state
     }
@@ -26,6 +30,13 @@ export const questions = (state = [], action) => {
                     answers: action.answers
                 }
             ]
+        case 'REPLACE_QUESTION':
+            return state.map(question =>
+                (question.id === action.previousId)
+                    ? action.nextQuestion
+                    : question
+            )
+
         default:
             return state
     }

@@ -5,10 +5,22 @@ export const addQuestion = (question) => ({
     answers: question.answers
 })
 
+export const replaceQuestion = (answer) => ({
+    type: 'REPLACE_QUESTION',
+    previousId: answer.questionId,
+    nextQuestion: answer.nextQuestion
+})
+
 export const addAnswer = (answer) => ({
     type: 'ADD_ANSWER',
     questionId: answer.questionId,
-    result: answer.result
+    result: answer.result,
+    nextQuestion: answer.nextQuestion
+})
+
+export const removeAnswer = (answer) => ({
+    type: 'REMOVE_ANSWER',
+    questionId: answer.questionId
 })
 
 export const fetchquestions = () => dispatch => {
@@ -35,6 +47,8 @@ export const sendAnswer = (questionId, answer) => dispatch => {
         .then(response => response.json())
         .then(json => {
             dispatch(addAnswer(json))
+            setTimeout(() => dispatch(replaceQuestion(json)), 3000)
+            setTimeout(() => dispatch(removeAnswer(json)), 3000)
         })
         .catch(e => alert("Problem huston"))
 }
