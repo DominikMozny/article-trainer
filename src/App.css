@@ -1,4 +1,17 @@
-.question {
-    width: 100px;
-    padding: 3px;
+.questionOuter {
+    width: 180px;
+    border-style: solid;
+    border-width: 1px;
 }
+
+.questionInner {
+    width: 100px;
+    padding: 4px;
+}
+
+.answerButton {
+    padding: 1px;
+    width: 30px;
+    background-color: WhiteSmoke;
+}
+
