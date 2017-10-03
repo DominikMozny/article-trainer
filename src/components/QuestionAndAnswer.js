@@ -1,4 +1,5 @@
 import React from 'react';
+import CountdownTimer from "./CountdownTimer";
 
 const answers = (answer, question, onClickAnswerButton) => {
     return answer ? null : question.answers.map((answer) =>
@@ -20,6 +21,13 @@ const getBgColor = (answer) => {
     return 'AliceBlue';
 }
 
+const showCountdown = (answer) => {
+    if (answer) {
+        return <CountdownTimer/>
+    }
+    return "";
+}
+
 const QuestionAndAnswer = ({question, answer, onClickAnswerButton}) => (
     <div className="questionOuter" style={{backgroundColor: getBgColor(answer)}}>
         <div className="questionInner" style={{display: 'inline-block'}}>
@@ -28,6 +36,8 @@ const QuestionAndAnswer = ({question, answer, onClickAnswerButton}) => (
         <div style={{display: 'inline-block'}}>
             {answers(answer, question, onClickAnswerButton)}
         </div>
+        {showCountdown(answer)}
+
     </div>
 )
 
