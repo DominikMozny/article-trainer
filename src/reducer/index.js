@@ -12,7 +12,7 @@ export const answers = (state = [], action) => {
             ]
         case 'REMOVE_ANSWER':
             return [
-                ...state.filter(answer => answer.questionId != action.questionId),
+                ...state.filter(answer => answer.questionId !== action.questionId),
             ]
         default:
             return state
@@ -42,7 +42,15 @@ export const questions = (state = [], action) => {
     }
 }
 
+export const configStatus = (status = "", action) => {
+    switch (action.type) {
+        case 'UPDATE_CONFIG_STATUS':
+            return action.status
+        default:
+            return status
+    }
+}
 
-const reducers = combineReducers({answers, questions})
+const reducers = combineReducers({answers, questions, configStatus})
 
 export default reducers

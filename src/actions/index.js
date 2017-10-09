@@ -23,6 +23,11 @@ export const removeAnswer = (answer) => ({
     questionId: answer.questionId
 })
 
+export const updateConfigStatus = (status) => ({
+    type: 'UPDATE_CONFIG_STATUS',
+    status: status
+})
+
 export const fetchquestions = () => dispatch => {
     fetch('http://localhost:8080/questions')
         .then(response => response.json())
@@ -51,4 +56,13 @@ export const sendAnswer = (questionId, answer) => dispatch => {
             setTimeout(() => dispatch(removeAnswer(json)), 3000)
         })
         .catch(e => alert("Problem huston"))
+}
+
+export const deleteAllQuestions = () => dispatch => {
+    fetch('http://localhost:8080/deleteAllQuestions')
+        .then(response => response)
+        .then(r => {
+            dispatch(updateConfigStatus('All questions deleted.'))
+            setTimeout(() => dispatch(updateConfigStatus('')), 3000)
+        })
 }
