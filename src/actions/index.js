@@ -66,3 +66,10 @@ export const deleteAllQuestions = () => dispatch => {
             setTimeout(() => dispatch(updateConfigStatus('')), 3000)
         })
 }
+
+export const addAllQuestions = (event) => dispatch => {
+    const reader = new FileReader()
+    reader.onload = (e) => alert(e.target.result)
+    reader.readAsText(event.target.files[0])
+    //now I have content of the file next step is create json from it and send it to backend
+}
