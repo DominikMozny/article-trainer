@@ -1,3 +1,5 @@
+import {articleQuestionsToJson} from "../logic/FileContentToJson";
+
 export const addQuestion = (question) => ({
     type: 'ADD_QUESTION',
     id: question.id,
@@ -69,7 +71,20 @@ export const deleteAllQuestions = () => dispatch => {
 
 export const addAllQuestions = (event) => dispatch => {
     const reader = new FileReader()
-    reader.onload = (e) => alert(e.target.result)
+    reader.onload = (e) => {
+        const json = articleQuestionsToJson(e.target.result);
+        fetch('http://localhost:8080/addAllFrQuestions', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: articleQuestionsToJson(json)
+        })
+            .then(response => response.json())
+            .then(json => alert(JSON.stringify(json)))
+            .catch(e => alert("Problem huston"))
+        //alert(json)
+    }
     reader.readAsText(event.target.files[0])
-    //now I have content of the file next step is create json from it and send it to backend
 }
