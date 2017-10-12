@@ -72,14 +72,14 @@ export const deleteAllQuestions = () => dispatch => {
 export const addAllQuestions = (event) => dispatch => {
     const reader = new FileReader()
     reader.onload = (e) => {
-        const json = articleQuestionsToJson(e.target.result);
+        const fileContentAsJson = articleQuestionsToJson(e.target.result);
         fetch('http://localhost:8080/addAllFrQuestions', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: articleQuestionsToJson(json)
+            body: fileContentAsJson
         })
             .then(response => response.json())
             .then(json => alert(JSON.stringify(json)))
