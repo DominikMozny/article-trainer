@@ -1,14 +1,9 @@
 import React from 'react';
 
-const Configurator = ({status, onClickDeleteAllButton, onSelectQuestionFile}) => (
+const Configurator = ({status, onSelectQuestionFile}) => (
     <div>
         <div>
             {status}
-        </div>
-        <div>
-            <button
-                onClick={() => onClickDeleteAllButton()}>Delete all questions
-            </button>
         </div>
         <div>
             Select file with definitions:

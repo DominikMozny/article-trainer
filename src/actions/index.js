@@ -65,15 +65,6 @@ export const sendAnswer = (questionId, answer) => dispatch => {
         .catch(e => alert("Problem huston"))
 }
 
-export const deleteAllQuestions = () => dispatch => {
-    fetch(BACKEND + 'deleteAllQuestions')
-        .then(response => response)
-        .then(r => {
-            dispatch(updateConfigStatus('All questions deleted.'))
-            setTimeout(() => dispatch(updateConfigStatus('')), DURATION_NOTIFICATION_WILL_BE_DISPLAYED)
-        })
-}
-
 export const addAllQuestions = (event) => dispatch => {
     const reader = new FileReader()
     reader.onload = (e) => {
