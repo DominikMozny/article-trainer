@@ -1,4 +1,9 @@
 import {articleQuestionsToJson} from "../logic/FileContentToJson";
+import {
+    BACKEND,
+    DURATION_NOTIFICATION_WILL_BE_DISPLAYED,
+    WAIT_BEFORE_NEW_QUESTION_IN_MS
+} from "../logic/staticConfiguration";
 
 export const addQuestion = (question) => ({
     type: 'ADD_QUESTION',
@@ -31,7 +36,7 @@ export const updateConfigStatus = (status) => ({
 })
 
 export const fetchquestions = () => dispatch => {
-    fetch('http://localhost:8080/questions')
+    fetch(BACKEND + 'questions')
         .then(response => response.json())
         .then(json => {
             json.questions.map((q) => dispatch(addQuestion(q)))
@@ -40,7 +45,7 @@ export const fetchquestions = () => dispatch => {
 }
 
 export const sendAnswer = (questionId, answer) => dispatch => {
-    fetch('http://localhost:8080/sendAnswer', {
+    fetch(BACKEND + 'sendAnswer', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -54,18 +59,18 @@ export const sendAnswer = (questionId, answer) => dispatch => {
         .then(response => response.json())
         .then(json => {
             dispatch(addAnswer(json))
-            setTimeout(() => dispatch(replaceQuestion(json)), 3000)
-            setTimeout(() => dispatch(removeAnswer(json)), 3000)
+            setTimeout(() => dispatch(replaceQuestion(json)), WAIT_BEFORE_NEW_QUESTION_IN_MS)
+            setTimeout(() => dispatch(removeAnswer(json)), WAIT_BEFORE_NEW_QUESTION_IN_MS)
         })
         .catch(e => alert("Problem huston"))
 }
 
 export const deleteAllQuestions = () => dispatch => {
-    fetch('http://localhost:8080/deleteAllQuestions')
+    fetch(BACKEND + 'deleteAllQuestions')
         .then(response => response)
         .then(r => {
             dispatch(updateConfigStatus('All questions deleted.'))
-            setTimeout(() => dispatch(updateConfigStatus('')), 3000)
+            setTimeout(() => dispatch(updateConfigStatus('')), DURATION_NOTIFICATION_WILL_BE_DISPLAYED)
         })
 }
 
@@ -73,7 +78,7 @@ export const addAllQuestions = (event) => dispatch => {
     const reader = new FileReader()
     reader.onload = (e) => {
         const fileContentAsJson = articleQuestionsToJson(e.target.result);
-        fetch('http://localhost:8080/addAllFrQuestions', {
+        fetch(BACKEND + 'addAllFrQuestions', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
