@@ -55,7 +55,9 @@ const QuestionAndAnswer = ({question, answer, onClickAnswerButton}) => (
         <div className="questionInner" style={{display: 'inline-block'}}>
             {question.question}
         </div>
-        {answerButtons(answer, question, onClickAnswerButton)}
+        <div style={{display: 'inline-block'}}>
+            {answerButtons(answer, question, onClickAnswerButton)}
+        </div>
         {statisticsAnswers(answer)}
         {showCountdown(answer)}
 
