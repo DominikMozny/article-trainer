@@ -2,7 +2,7 @@ import React from 'react';
 import Question from "./QuestionAndAnswer";
 
 const getQuestionsAndAnswers = (questions, answers, onClickAnswerButton) => {
-    const answerMap = new Map(answers.map((i) => [i.questionId, {questionId: i.questionId, result: i.result}]))
+    const answerMap = new Map(answers.map((i) => [i.questionId, i]))
     return questions.map((question) =>
         <div>
             <Question question={question}

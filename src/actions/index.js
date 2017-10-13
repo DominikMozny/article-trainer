@@ -22,6 +22,7 @@ export const addAnswer = (answer) => ({
     type: 'ADD_ANSWER',
     questionId: answer.questionId,
     result: answer.result,
+    statisticsAnswers: answer.statisticsAnswers,
     nextQuestion: answer.nextQuestion
 })
 

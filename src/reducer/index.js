@@ -7,7 +7,8 @@ export const answers = (state = [], action) => {
                 ...state,
                 {
                     questionId: action.questionId,
-                    result: action.result
+                    result: action.result,
+                    statisticsAnswers: action.statisticsAnswers
                 }
             ]
         case 'REMOVE_ANSWER':

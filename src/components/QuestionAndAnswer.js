@@ -1,13 +1,35 @@
 import React from 'react';
 import CountdownTimer from "./CountdownTimer";
 
-const answers = (answer, question, onClickAnswerButton) => {
+const answerButtons = (answer, question, onClickAnswerButton) => {
     return answer ? null : question.answers.map((answer) =>
         <div style={{display: 'inline-block'}}>
             <button className="answerButton"
                     onClick={() => onClickAnswerButton(question.id, answer)}>{answer}</button>
         </div>
     )
+}
+
+const statisticsAnswers = (answer) => {
+    return !answer ? null : <div style={{display: 'inline-block'}}>
+        {answer.statisticsAnswers.map((statistics) =>
+            statisticsAnswer(statistics)
+        )}
+    </div>
+}
+
+const statisticsAnswer = (statisticsAnswer) => {
+    return <div className="statistics" style={{backgroundColor: getStatisticsColor(statisticsAnswer.rightAnswer)}}>
+        {statisticsAnswer.answer}
+    </div>
+}
+
+const getStatisticsColor = (rightAnswer) => {
+    if (rightAnswer) {
+        return 'green'
+    } else {
+        return 'red'
+    }
 }
 
 const getBgColor = (answer) => {
@@ -33,7 +55,8 @@ const QuestionAndAnswer = ({question, answer, onClickAnswerButton}) => (
         <div className="questionInner" style={{display: 'inline-block'}}>
             {question.question}
         </div>
-        {answers(answer, question, onClickAnswerButton)}
+        {answerButtons(answer, question, onClickAnswerButton)}
+        {statisticsAnswers(answer)}
         {showCountdown(answer)}
 
     </div>
