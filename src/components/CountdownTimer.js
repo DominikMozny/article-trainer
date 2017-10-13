@@ -27,7 +27,7 @@ class CountdownTimer extends Component {
     render() {
         return (
             <div style={{display: 'inline-block'}}>
-                {Math.round(this.state.countdown / 100) / 10}
+                {parseFloat(Math.round(this.state.countdown / 100) / 10).toFixed(1)}
             </div>
         );
     }
