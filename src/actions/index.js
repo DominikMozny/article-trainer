@@ -78,7 +78,7 @@ export const addAllQuestions = (event) => dispatch => {
     const reader = new FileReader()
     reader.onload = (e) => {
         const fileContentAsJson = articleQuestionsToJson(e.target.result);
-        fetch(BACKEND + 'addAllFrQuestions', {
+        fetch(BACKEND + 'initFrQuestions', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -88,8 +88,7 @@ export const addAllQuestions = (event) => dispatch => {
         })
             .then(response => response.json())
             .then(json => alert(JSON.stringify(json)))
-            .catch(e => alert("Problem huston"))
-        //alert(json)
+            .catch(e => alert("Problem huston: " + e.toString()))
     }
     reader.readAsText(event.target.files[0])
 }
