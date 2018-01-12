@@ -6,7 +6,7 @@ Dictionary:
 * *PossibleAnswer* - One of answers displayed next to *Question*
 * *UserAnswer* - One of *PossibleAnswer*s selected by user
 * *RightAnswer* - right answer to *Question*, must be one of *PossibleAnswer*s
-* *RightAnswerPreviewDuration* - duration in millis how long *RightAnswer* and *StatisticsAnswers* will be displayed to *User" before replaced by next *Question* with *PossibleAnswer*s
+* *RightAnswerPreviewDuration* - duration in millis how long *RightAnswer* and *StatisticsAnswers* will be displayed to *User* before replaced by next *Question* with *PossibleAnswer*s
 * *StatisticsAnswers* - contains statistics for *Question* based on *UserAnswer*s
 * *AtbResToUserAnswer* - Is sent by *ATB* as response to *UserAnswer*, contains *RightAnswer*, next *Question* with *PossibleAnswer*s and *StatisticsAnswers*
 
