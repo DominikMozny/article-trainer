@@ -1,9 +1,5 @@
 import {articleQuestionsToJson} from "../logic/FileContentToJson";
-import {
-    BACKEND,
-    DURATION_NOTIFICATION_WILL_BE_DISPLAYED,
-    WAIT_BEFORE_NEW_QUESTION_IN_MS
-} from "../logic/staticConfiguration";
+import {BACKEND, WAIT_BEFORE_NEW_QUESTION_IN_MS} from "../logic/staticConfiguration";
 
 export const addQuestion = (question) => ({
     type: 'ADD_QUESTION',
