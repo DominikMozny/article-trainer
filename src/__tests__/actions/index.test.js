@@ -20,6 +20,48 @@ describe('addQuestionForm', () => {
 
 describe('replaceQuestionForm', () => {
     it('should create action to replace a question form', () => {
-        //TODO
+        const atbResToUserAnswer = {
+            questionId: 'some ID',
+            nextQuestion: 'some question'
+        }
+        const expectedAction = {
+            type: 'REPLACE_QUESTION_FORM',
+            previousId: atbResToUserAnswer.questionId,
+            nextQuestion: atbResToUserAnswer.nextQuestion
+        }
+        expect(actions.replaceQuestionForm(atbResToUserAnswer)).toEqual(expectedAction)
     })
 })
+
+describe('addRightAnswer', () => {
+    it('should create action to add rightAnswer', () => {
+        const atbResToUserAnswer = {
+            questionId: 'some ID',
+            userAnswerResult: 'some user answer result',
+            statisticsAnswers: 'some statistics',
+            nextQuestion: 'some question'
+        }
+        const expectedAction = {
+            type: 'ADD_RIGHT_ANSWER',
+            questionId: atbResToUserAnswer.questionId,
+            userAnswerResult: atbResToUserAnswer.userAnswerResult,
+            statisticsAnswers: atbResToUserAnswer.statisticsAnswers,
+            nextQuestion: atbResToUserAnswer.nextQuestion
+        }
+        expect(actions.addRightAnswer(atbResToUserAnswer)).toEqual(expectedAction)
+    })
+})
+
+describe('removeRightAnswer', () => {
+    it('should create action to remove rightAnswer', () => {
+        const atbResToUserAnswer = {
+            questionId: 'some ID',
+        }
+        const expectedAction = {
+            type: 'REMOVE_RIGHT_ANSWER',
+            questionId: atbResToUserAnswer.questionId,
+        }
+        expect(actions.removeRightAnswer(atbResToUserAnswer)).toEqual(expectedAction)
+    })
+})
+
