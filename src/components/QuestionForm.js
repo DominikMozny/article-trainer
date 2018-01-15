@@ -1,11 +1,11 @@
 import React from 'react';
 import CountdownTimer from "./CountdownTimer";
 
-const answerButtons = (answer, question, onClickAnswerButton) => {
-    return answer ? null : question.answers.map((answer) =>
+const answerButtons = (possibleAnswer, question, onClickAnswerButton) => {
+    return possibleAnswer ? null : question.possibleAnswers.map((possibleAnswer) =>
         <div style={{display: 'inline-block'}}>
             <button className="answerButton"
-                    onClick={() => onClickAnswerButton(question.id, answer)}>{answer}</button>
+                    onClick={() => onClickAnswerButton(question.id, possibleAnswer)}>{possibleAnswer}</button>
         </div>
     )
 }
@@ -50,7 +50,7 @@ const showCountdown = (answer) => {
     return "";
 }
 
-const QuestionAndAnswer = ({question, answer, onClickAnswerButton}) => (
+const QuestionForm = ({question, answer, onClickAnswerButton}) => (
     <div className="questionOuter" style={{backgroundColor: getBgColor(answer)}}>
         <div className="questionInner" style={{display: 'inline-block'}}>
             {question.question}
@@ -64,4 +64,4 @@ const QuestionAndAnswer = ({question, answer, onClickAnswerButton}) => (
     </div>
 )
 
-export default QuestionAndAnswer
+export default QuestionForm

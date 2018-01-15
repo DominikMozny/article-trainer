@@ -2,16 +2,16 @@ import {combineReducers} from 'redux'
 
 export const answers = (state = [], action) => {
     switch (action.type) {
-        case 'ADD_ANSWER':
+        case 'ADD_RIGHT_ANSWER':
             return [
                 ...state,
                 {
                     questionId: action.questionId,
-                    result: action.result,
+                    userActionResultResult: action.userActionResult,
                     statisticsAnswers: action.statisticsAnswers
                 }
             ]
-        case 'REMOVE_ANSWER':
+        case 'REMOVE_RIGHT_ANSWER':
             return [
                 ...state.filter(answer => answer.questionId !== action.questionId),
             ]
@@ -20,18 +20,18 @@ export const answers = (state = [], action) => {
     }
 }
 
-export const questions = (state = [], action) => {
+export const questionForms = (state = [], action) => {
     switch (action.type) {
-        case 'ADD_QUESTION':
+        case 'ADD_QUESTION_FORM':
             return [
                 ...state,
                 {
                     id: action.id,
                     question: action.question,
-                    answers: action.answers
+                    possibleAnswers: action.possibleAnswers
                 }
             ]
-        case 'REPLACE_QUESTION':
+        case 'REPLACE_QUESTION_FORM':
             return state.map(question =>
                 (question.id === action.previousId)
                     ? action.nextQuestion
@@ -52,6 +52,6 @@ export const configStatus = (status = "", action) => {
     }
 }
 
-const reducers = combineReducers({answers, questions, configStatus})
+const reducers = combineReducers({answers, questionForms, configStatus})
 
 export default reducers

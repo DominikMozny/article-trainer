@@ -1,30 +1,30 @@
 import {articleQuestionsToJson} from "../logic/FileContentToJson";
 import {BACKEND, WAIT_BEFORE_NEW_QUESTION_IN_MS} from "../logic/staticConfiguration";
 
-export const addQuestion = (question) => ({
-    type: 'ADD_QUESTION',
-    id: question.id,
-    question: question.question,
-    answers: question.answers
+export const addQuestionForm = (questionForm) => ({
+    type: 'ADD_QUESTION_FORM',
+    id: questionForm.id,
+    question: questionForm.question,
+    possibleAnswers: questionForm.possibleAnswers
 })
 
-export const replaceQuestion = (answer) => ({
-    type: 'REPLACE_QUESTION',
-    previousId: answer.questionId,
-    nextQuestion: answer.nextQuestion
+export const replaceQuestionForm = (atbResToUserAnswer) => ({
+    type: 'REPLACE_QUESTION_FORM',
+    previousId: atbResToUserAnswer.questionId,
+    nextQuestion: atbResToUserAnswer.nextQuestion
 })
 
-export const addAnswer = (answer) => ({
-    type: 'ADD_ANSWER',
-    questionId: answer.questionId,
-    result: answer.result,
-    statisticsAnswers: answer.statisticsAnswers,
-    nextQuestion: answer.nextQuestion
+export const addRightAnswer = (atbResToUserAnswer) => ({
+    type: 'ADD_RIGHT_ANSWER',
+    questionId: atbResToUserAnswer.questionId,
+    userAnswerResult: atbResToUserAnswer.userAnswerResult,
+    statisticsAnswers: atbResToUserAnswer.statisticsAnswers,
+    nextQuestion: atbResToUserAnswer.nextQuestion
 })
 
-export const removeAnswer = (answer) => ({
-    type: 'REMOVE_ANSWER',
-    questionId: answer.questionId
+export const removeRightAnswer = (atbResToUserAnswer) => ({
+    type: 'REMOVE_RIGHT_ANSWER',
+    questionId: atbResToUserAnswer.questionId
 })
 
 export const updateConfigStatus = (status) => ({
@@ -36,12 +36,12 @@ export const fetchquestions = () => dispatch => {
     fetch(BACKEND + 'questions')
         .then(response => response.json())
         .then(json => {
-            json.questions.map((q) => dispatch(addQuestion(q)))
+            json.questions.map((q) => dispatch(addQuestionForm(q)))
         })
         .catch(e => alert(e.toString()))
 }
 
-export const sendAnswer = (questionId, answer) => dispatch => {
+export const sendUserAnswer = (questionId, answer) => dispatch => {
     fetch(BACKEND + 'sendAnswer', {
         method: 'POST',
         headers: {
@@ -55,9 +55,9 @@ export const sendAnswer = (questionId, answer) => dispatch => {
     })
         .then(response => response.json())
         .then(json => {
-            dispatch(addAnswer(json))
-            setTimeout(() => dispatch(replaceQuestion(json)), WAIT_BEFORE_NEW_QUESTION_IN_MS)
-            setTimeout(() => dispatch(removeAnswer(json)), WAIT_BEFORE_NEW_QUESTION_IN_MS)
+            dispatch(addRightAnswer(json))
+            setTimeout(() => dispatch(replaceQuestionForm(json)), WAIT_BEFORE_NEW_QUESTION_IN_MS)
+            setTimeout(() => dispatch(removeRightAnswer(json)), WAIT_BEFORE_NEW_QUESTION_IN_MS)
         })
         .catch(e => alert("Problem huston"))
 }

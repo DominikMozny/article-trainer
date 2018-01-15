@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import './App.css';
-import QuestionsAndAnswersRedux from "./containers/QuestionsAndAnswersRedux";
 import {fetchquestions} from "./actions/index";
 import DevTools from "./DevTools";
 import ConfiguratorRedux from "./containers/ConfiguratorRedux";
+import QuestionFormsRedux from "./containers/QuestionFormsRedux";
 
 class App extends Component {
     componentDidMount() {
@@ -15,7 +15,7 @@ class App extends Component {
         return (
             <div>
                 <DevTools/>
-                <QuestionsAndAnswersRedux/>
+                <QuestionFormsRedux/>
                 <ConfiguratorRedux/>
             </div>
         );

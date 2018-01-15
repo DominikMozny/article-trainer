@@ -8,7 +8,8 @@ Dictionary:
 * *RightAnswer* - right answer to *Question*, must be one of *PossibleAnswer*s
 * *RightAnswerPreviewDuration* - duration in millis how long *RightAnswer* and *StatisticsAnswers* will be displayed to *User* before replaced by next *Question* with *PossibleAnswer*s
 * *StatisticsAnswers* - contains statistics for *Question* based on *UserAnswer*s
-* *AtbResToUserAnswer* - Is sent by *ATB* as response to *UserAnswer*, contains *RightAnswer*, next *Question* with *PossibleAnswer*s and *StatisticsAnswers*
+* *QuestionForm* - Displayed *Question* either with *PossibleAnswer*s to be answered or with *RightAnswer* and *StatisticsAnswer*s
+* *AtbResToUserAnswer* - Is sent by *ATB* as response to *UserAnswer*, contains *RightAnswer* and *StatisticsAnswers* for old *Question* and new *Question*
 
 
 

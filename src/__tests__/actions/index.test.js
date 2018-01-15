@@ -1,25 +1,25 @@
 import React from 'react';
 import * as actions from '../../actions/index'
 
-describe('addQuestion', () => {
-    it('should create action to add a question', () => {
+describe('addQuestionForm', () => {
+    it('should create action to add a question form', () => {
         const question = {
             id: 'some ID',
             question: 'some question',
-            answers: 'answers'
+            possibleAnswers: 'possibleAnswers'
         }
         const expectedAction = {
-            type: 'ADD_QUESTION',
+            type: 'ADD_QUESTION_FORM',
             id: question.id,
             question: question.question,
-            answers: question.answers
+            possibleAnswers: question.possibleAnswers
         }
-        expect(actions.addQuestion(question)).toEqual(expectedAction)
+        expect(actions.addQuestionForm(question)).toEqual(expectedAction)
     })
 })
 
-describe('replaceQuestion', () => {
-    it('should create action to replace a question', () => {
+describe('replaceQuestionForm', () => {
+    it('should create action to replace a question form', () => {
         //TODO
     })
 })
