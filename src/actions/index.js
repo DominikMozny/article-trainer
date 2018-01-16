@@ -38,7 +38,7 @@ export const updateConfigStatus = (status) => ({
 })
 
 export const fetchquestions = () => dispatch => {
-    fetch(QUESTION_FORMS)
+    return fetch(QUESTION_FORMS)
         .then(response => response.json())
         .then(json => {
             json.questionForms.map((q) => dispatch(addQuestionForm(q)))
@@ -47,7 +47,7 @@ export const fetchquestions = () => dispatch => {
 }
 
 export const sendUserAnswer = (questionId, answer) => dispatch => {
-    fetch(USER_ANSWER, {
+    return fetch(USER_ANSWER, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
