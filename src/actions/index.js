@@ -60,6 +60,7 @@ export const sendUserAnswer = (questionId, answer) => dispatch => {
     })
         .then(response => response.json())
         .then(json => {
+            alert(JSON.stringify(json))
             dispatch(addRightAnswer(json))
             setTimeout(() => dispatch(replaceQuestionForm(json)), WAIT_BEFORE_NEW_QUESTION_IN_MS)
             setTimeout(() => dispatch(removeRightAnswer(json)), WAIT_BEFORE_NEW_QUESTION_IN_MS)

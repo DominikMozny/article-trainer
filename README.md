@@ -22,3 +22,7 @@ Select Question UseCase
 * *User* click one of *PossibleAnswer*s which is then send as *UserAnswer* to *ATB*
 * *ATB* send *AtbResToUserAnswer* back
 * *RightAnswer* with *StatisticsAnswers* is displayed for *RightAnswerPreviewDuration* ms. After this period new *Question* with *PossibleAnswer*s is displayed.
+
+
+Some Useful Links for Development:
+https://facebook.github.io/jest/docs/en/timer-mocks.html

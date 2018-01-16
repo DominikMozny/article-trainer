@@ -3,11 +3,12 @@ import * as actions from '../../actions/index'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import fetchMock from 'fetch-mock'
-import {QUESTION_FORMS} from "../../constants/urls";
+import {QUESTION_FORMS, USER_ANSWER} from "../../constants/urls";
 import {
     ADD_QUESTION_FORM, ADD_RIGHT_ANSWER, REMOVE_RIGHT_ANSWER,
     REPLACE_QUESTION_FORM
 } from "../../constants/actionTypes";
+import {WAIT_BEFORE_NEW_QUESTION_IN_MS} from "../../constants/staticConfiguration";
 
 describe('addQuestionForm', () => {
     it('should create action to add a question form', () => {
@@ -78,13 +79,13 @@ describe('removeRightAnswer', () => {
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
 
-describe('async actions', () => {
+describe('fetch questionForms from ATB', () => {
     afterEach(() => {
         fetchMock.reset()
         fetchMock.restore()
     })
 
-    it('fetch questionForms from ATB', () => {
+    it('should fetch questionForms from ATB', () => {
         fetchMock.getOnce(QUESTION_FORMS, {
             body: {
                 questionForms: [{
@@ -106,6 +107,65 @@ describe('async actions', () => {
         const store = mockStore({})
         return store.dispatch(actions.fetchQuestionForms()).then(() => {
             expect(store.getActions()).toEqual(expectedActions)
+        })
+    })
+})
+
+describe('send UserAnswer to ATB', () => {
+    afterEach(() => {
+        fetchMock.reset()
+        fetchMock.restore()
+    })
+
+
+    it('should send UserAnswer to ATB and then update relevant QuestionForm with data from ATB Response', () => {
+        fetchMock.postOnce(USER_ANSWER, {
+            body: {
+                questionId: "questionId",
+                statisticsAnswers: "statisticsAnswers",
+                nextQuestion: "nextQuestion",
+                userAnswerResult: "userAnswerResult"
+            }, headers: {'content-type': 'application/json'}
+        })
+
+        const questionId = "questionId"
+        const answer = "answer"
+
+        const expectedActionsBeforeReplacingQuestionForm = [
+            {
+                "type": "ADD_RIGHT_ANSWER",
+                "nextQuestion": "nextQuestion",
+                "questionId": "questionId",
+                "statisticsAnswers": "statisticsAnswers",
+                "userAnswerResult": "userAnswerResult"
+            }
+        ]
+        const expectedActionsAfterReplacingQuestionForm = [
+            {
+                "type": "ADD_RIGHT_ANSWER",
+                "nextQuestion": "nextQuestion",
+                "questionId": "questionId",
+                "statisticsAnswers": "statisticsAnswers",
+                "userAnswerResult": "userAnswerResult"
+            },
+            {
+                "type": "REPLACE_QUESTION_FORM",
+                "nextQuestion": "nextQuestion",
+                "previousId": "questionId"
+            },
+            {
+                "type": "REMOVE_RIGHT_ANSWER",
+                "questionId": "questionId"
+            }
+        ]
+        const store = mockStore({})
+        jest.useFakeTimers()
+        return store.dispatch(actions.sendUserAnswer(questionId, answer)).then(() => {
+            expect(setTimeout).toHaveBeenCalledTimes(2);
+            expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), WAIT_BEFORE_NEW_QUESTION_IN_MS);
+            expect(store.getActions()).toEqual(expectedActionsBeforeReplacingQuestionForm)
+            jest.runAllTimers()
+            expect(store.getActions()).toEqual(expectedActionsAfterReplacingQuestionForm)
         })
     })
 })
