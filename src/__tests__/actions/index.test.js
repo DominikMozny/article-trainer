@@ -4,7 +4,10 @@ import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import fetchMock from 'fetch-mock'
 import {QUESTION_FORMS} from "../../constants/urls";
-import {ADD_QUESTION_FORM} from "../../constants/actionTypes";
+import {
+    ADD_QUESTION_FORM, ADD_RIGHT_ANSWER, REMOVE_RIGHT_ANSWER,
+    REPLACE_QUESTION_FORM
+} from "../../constants/actionTypes";
 
 describe('addQuestionForm', () => {
     it('should create action to add a question form', () => {
@@ -30,7 +33,7 @@ describe('replaceQuestionForm', () => {
             nextQuestion: 'some question'
         }
         const expectedAction = {
-            type: 'REPLACE_QUESTION_FORM',
+            type: REPLACE_QUESTION_FORM,
             previousId: atbResToUserAnswer.questionId,
             nextQuestion: atbResToUserAnswer.nextQuestion
         }
@@ -47,7 +50,7 @@ describe('addRightAnswer', () => {
             nextQuestion: 'some question'
         }
         const expectedAction = {
-            type: 'ADD_RIGHT_ANSWER',
+            type: ADD_RIGHT_ANSWER,
             questionId: atbResToUserAnswer.questionId,
             userAnswerResult: atbResToUserAnswer.userAnswerResult,
             statisticsAnswers: atbResToUserAnswer.statisticsAnswers,
@@ -63,7 +66,7 @@ describe('removeRightAnswer', () => {
             questionId: 'some ID',
         }
         const expectedAction = {
-            type: 'REMOVE_RIGHT_ANSWER',
+            type: REMOVE_RIGHT_ANSWER,
             questionId: atbResToUserAnswer.questionId,
         }
         expect(actions.removeRightAnswer(atbResToUserAnswer)).toEqual(expectedAction)
