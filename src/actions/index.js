@@ -37,7 +37,7 @@ export const updateConfigStatus = (status) => ({
     status: status
 })
 
-export const fetchquestions = () => dispatch => {
+export const fetchQuestionForms = () => dispatch => {
     return fetch(QUESTION_FORMS)
         .then(response => response.json())
         .then(json => {

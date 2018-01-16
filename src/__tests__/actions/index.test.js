@@ -99,7 +99,7 @@ describe('async actions', () => {
             {type: ADD_QUESTION_FORM, id: "id", question: "question", possibleAnswers: "possibleAnswers"}
         ]
         const store = mockStore({})
-        return store.dispatch(actions.fetchquestions()).then(() => {
+        return store.dispatch(actions.fetchQuestionForms()).then(() => {
             expect(store.getActions()).toEqual(expectedActions)
         })
     })
