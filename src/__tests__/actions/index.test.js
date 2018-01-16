@@ -1,5 +1,10 @@
 import React from 'react';
 import * as actions from '../../actions/index'
+import configureMockStore from 'redux-mock-store'
+import thunk from 'redux-thunk'
+import fetchMock from 'fetch-mock'
+import {QUESTION_FORMS} from "../../constants/urls";
+import {ADD_QUESTION_FORM} from "../../constants/actionTypes";
 
 describe('addQuestionForm', () => {
     it('should create action to add a question form', () => {
@@ -9,7 +14,7 @@ describe('addQuestionForm', () => {
             possibleAnswers: 'possibleAnswers'
         }
         const expectedAction = {
-            type: 'ADD_QUESTION_FORM',
+            type: ADD_QUESTION_FORM,
             id: question.id,
             question: question.question,
             possibleAnswers: question.possibleAnswers
@@ -62,6 +67,38 @@ describe('removeRightAnswer', () => {
             questionId: atbResToUserAnswer.questionId,
         }
         expect(actions.removeRightAnswer(atbResToUserAnswer)).toEqual(expectedAction)
+    })
+})
+
+
+//Async actions
+const middlewares = [thunk]
+const mockStore = configureMockStore(middlewares)
+
+describe('async actions', () => {
+    afterEach(() => {
+        fetchMock.reset()
+        fetchMock.restore()
+    })
+
+    it('fetch questionForms from ATB', () => {
+        fetchMock.getOnce(QUESTION_FORMS, {
+            body: {
+                questionForms: [{
+                    id: "id",
+                    question: "question",
+                    possibleAnswers: "possibleAnswers"
+                }]
+            }, headers: {'content-type': 'application/json'}
+        })
+
+        const expectedActions = [
+            {type: ADD_QUESTION_FORM, id: "id", question: "question", possibleAnswers: "possibleAnswers"}
+        ]
+        const store = mockStore({})
+        return store.dispatch(actions.fetchquestions()).then(() => {
+            expect(store.getActions()).toEqual(expectedActions)
+        })
     })
 })
 
