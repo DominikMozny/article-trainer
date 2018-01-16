@@ -1,5 +1,5 @@
 import {articleQuestionsToJson} from "../logic/FileContentToJson";
-import {BACKEND, WAIT_BEFORE_NEW_QUESTION_IN_MS} from "../logic/staticConfiguration";
+import {BACKEND, WAIT_BEFORE_NEW_QUESTION_IN_MS} from "../constants/staticConfiguration";
 
 export const addQuestionForm = (questionForm) => ({
     type: 'ADD_QUESTION_FORM',

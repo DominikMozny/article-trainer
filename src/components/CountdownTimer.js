@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {WAIT_BEFORE_NEW_QUESTION_IN_MS} from "../logic/staticConfiguration";
+import {WAIT_BEFORE_NEW_QUESTION_IN_MS} from "../constants/staticConfiguration";
 
 class CountdownTimer extends Component {
     constructor(props) {
