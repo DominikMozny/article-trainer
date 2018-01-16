@@ -1,8 +1,12 @@
 import {combineReducers} from 'redux'
+import {
+    ADD_QUESTION_FORM, ADD_RIGHT_ANSWER, REMOVE_RIGHT_ANSWER, REPLACE_QUESTION_FORM,
+    UPDATE_CONFIG_STATUS
+} from "../constants/actionTypes";
 
 export const answers = (state = [], action) => {
     switch (action.type) {
-        case 'ADD_RIGHT_ANSWER':
+        case ADD_RIGHT_ANSWER:
             return [
                 ...state,
                 {
@@ -11,7 +15,7 @@ export const answers = (state = [], action) => {
                     statisticsAnswers: action.statisticsAnswers
                 }
             ]
-        case 'REMOVE_RIGHT_ANSWER':
+        case REMOVE_RIGHT_ANSWER:
             return [
                 ...state.filter(answer => answer.questionId !== action.questionId),
             ]
@@ -22,7 +26,7 @@ export const answers = (state = [], action) => {
 
 export const questionForms = (state = [], action) => {
     switch (action.type) {
-        case 'ADD_QUESTION_FORM':
+        case ADD_QUESTION_FORM:
             return [
                 ...state,
                 {
@@ -31,7 +35,7 @@ export const questionForms = (state = [], action) => {
                     possibleAnswers: action.possibleAnswers
                 }
             ]
-        case 'REPLACE_QUESTION_FORM':
+        case REPLACE_QUESTION_FORM:
             return state.map(question =>
                 (question.id === action.previousId)
                     ? action.nextQuestion
@@ -45,7 +49,7 @@ export const questionForms = (state = [], action) => {
 
 export const configStatus = (status = "", action) => {
     switch (action.type) {
-        case 'UPDATE_CONFIG_STATUS':
+        case UPDATE_CONFIG_STATUS:
             return action.status
         default:
             return status

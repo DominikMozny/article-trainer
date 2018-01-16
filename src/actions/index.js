@@ -1,21 +1,25 @@
 import {articleQuestionsToJson} from "../logic/FileContentToJson";
 import {BACKEND, WAIT_BEFORE_NEW_QUESTION_IN_MS} from "../constants/staticConfiguration";
+import {
+    ADD_QUESTION_FORM, ADD_RIGHT_ANSWER, REMOVE_RIGHT_ANSWER, REPLACE_QUESTION_FORM,
+    UPDATE_CONFIG_STATUS
+} from "../constants/actionTypes";
 
 export const addQuestionForm = (questionForm) => ({
-    type: 'ADD_QUESTION_FORM',
+    type: ADD_QUESTION_FORM,
     id: questionForm.id,
     question: questionForm.question,
     possibleAnswers: questionForm.possibleAnswers
 })
 
 export const replaceQuestionForm = (atbResToUserAnswer) => ({
-    type: 'REPLACE_QUESTION_FORM',
+    type: REPLACE_QUESTION_FORM,
     previousId: atbResToUserAnswer.questionId,
     nextQuestion: atbResToUserAnswer.nextQuestion
 })
 
 export const addRightAnswer = (atbResToUserAnswer) => ({
-    type: 'ADD_RIGHT_ANSWER',
+    type: ADD_RIGHT_ANSWER,
     questionId: atbResToUserAnswer.questionId,
     userAnswerResult: atbResToUserAnswer.userAnswerResult,
     statisticsAnswers: atbResToUserAnswer.statisticsAnswers,
@@ -23,12 +27,12 @@ export const addRightAnswer = (atbResToUserAnswer) => ({
 })
 
 export const removeRightAnswer = (atbResToUserAnswer) => ({
-    type: 'REMOVE_RIGHT_ANSWER',
+    type: REMOVE_RIGHT_ANSWER,
     questionId: atbResToUserAnswer.questionId
 })
 
 export const updateConfigStatus = (status) => ({
-    type: 'UPDATE_CONFIG_STATUS',
+    type: UPDATE_CONFIG_STATUS,
     status: status
 })
 
