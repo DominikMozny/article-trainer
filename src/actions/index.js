@@ -4,6 +4,7 @@ import {
     ADD_QUESTION_FORM, ADD_RIGHT_ANSWER, REMOVE_RIGHT_ANSWER, REPLACE_QUESTION_FORM,
     UPDATE_CONFIG_STATUS
 } from "../constants/actionTypes";
+import {QUESTION_FORMS, USER_ANSWER} from "../constants/urls";
 
 export const addQuestionForm = (questionForm) => ({
     type: ADD_QUESTION_FORM,
@@ -37,7 +38,7 @@ export const updateConfigStatus = (status) => ({
 })
 
 export const fetchquestions = () => dispatch => {
-    fetch(BACKEND + 'questions')
+    fetch(QUESTION_FORMS)
         .then(response => response.json())
         .then(json => {
             json.questions.map((q) => dispatch(addQuestionForm(q)))
@@ -46,7 +47,7 @@ export const fetchquestions = () => dispatch => {
 }
 
 export const sendUserAnswer = (questionId, answer) => dispatch => {
-    fetch(BACKEND + 'sendAnswer', {
+    fetch(USER_ANSWER, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
