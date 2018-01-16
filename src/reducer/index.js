@@ -7,7 +7,7 @@ export const answers = (state = [], action) => {
                 ...state,
                 {
                     questionId: action.questionId,
-                    userActionResultResult: action.userActionResult,
+                    userAnswerResult: action.userAnswerResult,
                     statisticsAnswers: action.statisticsAnswers
                 }
             ]
