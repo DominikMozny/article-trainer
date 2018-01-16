@@ -41,7 +41,7 @@ export const fetchquestions = () => dispatch => {
     fetch(QUESTION_FORMS)
         .then(response => response.json())
         .then(json => {
-            json.questions.map((q) => dispatch(addQuestionForm(q)))
+            json.questionForms.map((q) => dispatch(addQuestionForm(q)))
         })
         .catch(e => alert(e.toString()))
 }
