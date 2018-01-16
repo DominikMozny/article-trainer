@@ -88,15 +88,20 @@ describe('async actions', () => {
         fetchMock.getOnce(QUESTION_FORMS, {
             body: {
                 questionForms: [{
-                    id: "id",
-                    question: "question",
-                    possibleAnswers: "possibleAnswers"
+                    id: "id1",
+                    question: "question1",
+                    possibleAnswers: "possibleAnswers1"
+                }, {
+                    id: "id2",
+                    question: "question2",
+                    possibleAnswers: "possibleAnswers2"
                 }]
             }, headers: {'content-type': 'application/json'}
         })
 
         const expectedActions = [
-            {type: ADD_QUESTION_FORM, id: "id", question: "question", possibleAnswers: "possibleAnswers"}
+            {type: ADD_QUESTION_FORM, id: "id1", question: "question1", possibleAnswers: "possibleAnswers1"},
+            {type: ADD_QUESTION_FORM, id: "id2", question: "question2", possibleAnswers: "possibleAnswers2"}
         ]
         const store = mockStore({})
         return store.dispatch(actions.fetchQuestionForms()).then(() => {
