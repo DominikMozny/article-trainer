@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "react-redux": "latest",
-    "react-scripts": "1.0.14",
+    "react-scripts": "^1.1.0",
     "redux": "latest",
     "redux-thunk": "^2.2.0"
   },
