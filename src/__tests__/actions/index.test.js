@@ -7,7 +7,7 @@ import {QUESTION_FORMS, USER_ANSWER} from "../../constants/urls";
 import {
     ADD_QUESTION_FORM,
     ADD_RIGHT_ANSWER_WITH_STATS,
-    REMOVE_RIGHT_ANSWER,
+    REMOVE_RIGHT_ANSWER_WITH_STATS,
     REPLACE_QUESTION_FORM
 } from "../../constants/actionTypes";
 import {WAIT_BEFORE_NEW_QUESTION_IN_MS} from "../../constants/staticConfiguration";
@@ -69,7 +69,7 @@ describe('removeRightAnswer', () => {
             questionId: 'some ID',
         }
         const expectedAction = {
-            type: REMOVE_RIGHT_ANSWER,
+            type: REMOVE_RIGHT_ANSWER_WITH_STATS,
             questionId: atbResToUserAnswer.questionId,
         }
         expect(actions.removeRightAnswer(atbResToUserAnswer)).toEqual(expectedAction)
@@ -156,7 +156,7 @@ describe('send UserAnswer to ATB', () => {
                 "previousId": "questionId"
             },
             {
-                "type": "REMOVE_RIGHT_ANSWER",
+                "type": "REMOVE_RIGHT_ANSWER_WITH_STATS",
                 "questionId": "questionId"
             }
         ]

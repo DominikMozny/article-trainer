@@ -2,7 +2,7 @@ import {combineReducers} from 'redux'
 import {
     ADD_QUESTION_FORM,
     ADD_RIGHT_ANSWER_WITH_STATS,
-    REMOVE_RIGHT_ANSWER,
+    REMOVE_RIGHT_ANSWER_WITH_STATS,
     REPLACE_QUESTION_FORM,
     UPDATE_CONFIG_STATUS
 } from "../constants/actionTypes";
@@ -18,7 +18,7 @@ export const answers = (state = [], action) => {
                     statisticsAnswers: action.statisticsAnswers
                 }
             ]
-        case REMOVE_RIGHT_ANSWER:
+        case REMOVE_RIGHT_ANSWER_WITH_STATS:
             return [
                 ...state.filter(answer => answer.questionId !== action.questionId),
             ]

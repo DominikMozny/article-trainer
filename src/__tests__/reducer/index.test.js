@@ -1,6 +1,6 @@
 import React from 'react';
 import reducers, {answers, questionForms} from "../../reducer";
-import {ADD_RIGHT_ANSWER_WITH_STATS, REMOVE_RIGHT_ANSWER} from "../../constants/actionTypes";
+import {ADD_RIGHT_ANSWER_WITH_STATS, REMOVE_RIGHT_ANSWER_WITH_STATS} from "../../constants/actionTypes";
 
 
 describe('all reducers initial state', () => {
@@ -67,7 +67,7 @@ describe('answers ADD_RIGHT_ANSWER_WITH_STATS, state contains one question', () 
     })
 })
 
-describe('answers REMOVE_RIGHT_ANSWER, state contains one question', () => {
+describe('answers REMOVE_RIGHT_ANSWER_WITH_STATS, state contains one question', () => {
     it('state should contain no questions', () => {
         const state = {
             questionId: "questionId",
@@ -76,7 +76,7 @@ describe('answers REMOVE_RIGHT_ANSWER, state contains one question', () => {
         }
 
         const action = {
-            type: REMOVE_RIGHT_ANSWER,
+            type: REMOVE_RIGHT_ANSWER_WITH_STATS,
             questionId: state.questionId,
             userAnswerResult: state.userAnswerResult,
             statisticsAnswers: state.statisticsAnswers

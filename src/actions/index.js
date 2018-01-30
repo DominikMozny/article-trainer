@@ -3,7 +3,7 @@ import {BACKEND, WAIT_BEFORE_NEW_QUESTION_IN_MS} from "../constants/staticConfig
 import {
     ADD_QUESTION_FORM,
     ADD_RIGHT_ANSWER_WITH_STATS,
-    REMOVE_RIGHT_ANSWER,
+    REMOVE_RIGHT_ANSWER_WITH_STATS,
     REPLACE_QUESTION_FORM,
     UPDATE_CONFIG_STATUS
 } from "../constants/actionTypes";
@@ -31,7 +31,7 @@ export const addRightAnswer = (atbResToUserAnswer) => ({
 })
 
 export const removeRightAnswer = (atbResToUserAnswer) => ({
-    type: REMOVE_RIGHT_ANSWER,
+    type: REMOVE_RIGHT_ANSWER_WITH_STATS,
     questionId: atbResToUserAnswer.questionId
 })
 
