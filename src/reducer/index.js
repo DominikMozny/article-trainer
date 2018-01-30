@@ -1,12 +1,15 @@
 import {combineReducers} from 'redux'
 import {
-    ADD_QUESTION_FORM, ADD_RIGHT_ANSWER, REMOVE_RIGHT_ANSWER, REPLACE_QUESTION_FORM,
+    ADD_QUESTION_FORM,
+    ADD_RIGHT_ANSWER_WITH_STATS,
+    REMOVE_RIGHT_ANSWER,
+    REPLACE_QUESTION_FORM,
     UPDATE_CONFIG_STATUS
 } from "../constants/actionTypes";
 
 export const answers = (state = [], action) => {
     switch (action.type) {
-        case ADD_RIGHT_ANSWER:
+        case ADD_RIGHT_ANSWER_WITH_STATS:
             return [
                 ...state,
                 {

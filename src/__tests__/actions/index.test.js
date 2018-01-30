@@ -6,7 +6,7 @@ import fetchMock from 'fetch-mock'
 import {QUESTION_FORMS, USER_ANSWER} from "../../constants/urls";
 import {
     ADD_QUESTION_FORM,
-    ADD_RIGHT_ANSWER,
+    ADD_RIGHT_ANSWER_WITH_STATS,
     REMOVE_RIGHT_ANSWER,
     REPLACE_QUESTION_FORM
 } from "../../constants/actionTypes";
@@ -53,7 +53,7 @@ describe('addRightAnswer', () => {
             nextQuestion: 'some question'
         }
         const expectedAction = {
-            type: ADD_RIGHT_ANSWER,
+            type: ADD_RIGHT_ANSWER_WITH_STATS,
             questionId: atbResToUserAnswer.questionId,
             userAnswerResult: atbResToUserAnswer.userAnswerResult,
             statisticsAnswers: atbResToUserAnswer.statisticsAnswers,
@@ -135,7 +135,7 @@ describe('send UserAnswer to ATB', () => {
 
         const expectedActionsBeforeReplacingQuestionForm = [
             {
-                "type": "ADD_RIGHT_ANSWER",
+                "type": "ADD_RIGHT_ANSWER_WITH_STATS",
                 "nextQuestion": "nextQuestion",
                 "questionId": "questionId",
                 "statisticsAnswers": "statisticsAnswers",
@@ -144,7 +144,7 @@ describe('send UserAnswer to ATB', () => {
         ]
         const expectedActionsAfterReplacingQuestionForm = [
             {
-                "type": "ADD_RIGHT_ANSWER",
+                "type": "ADD_RIGHT_ANSWER_WITH_STATS",
                 "nextQuestion": "nextQuestion",
                 "questionId": "questionId",
                 "statisticsAnswers": "statisticsAnswers",

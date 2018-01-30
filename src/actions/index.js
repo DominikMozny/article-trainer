@@ -1,7 +1,10 @@
 import {articleQuestionsToJson} from "../logic/FileContentToJson";
 import {BACKEND, WAIT_BEFORE_NEW_QUESTION_IN_MS} from "../constants/staticConfiguration";
 import {
-    ADD_QUESTION_FORM, ADD_RIGHT_ANSWER, REMOVE_RIGHT_ANSWER, REPLACE_QUESTION_FORM,
+    ADD_QUESTION_FORM,
+    ADD_RIGHT_ANSWER_WITH_STATS,
+    REMOVE_RIGHT_ANSWER,
+    REPLACE_QUESTION_FORM,
     UPDATE_CONFIG_STATUS
 } from "../constants/actionTypes";
 import {QUESTION_FORMS, USER_ANSWER} from "../constants/urls";
@@ -20,7 +23,7 @@ export const replaceQuestionForm = (atbResToUserAnswer) => ({
 })
 
 export const addRightAnswer = (atbResToUserAnswer) => ({
-    type: ADD_RIGHT_ANSWER,
+    type: ADD_RIGHT_ANSWER_WITH_STATS,
     questionId: atbResToUserAnswer.questionId,
     userAnswerResult: atbResToUserAnswer.userAnswerResult,
     statisticsAnswers: atbResToUserAnswer.statisticsAnswers,

@@ -6,12 +6,11 @@ Dictionary:
 * *PossibleAnswer* - One of answers displayed next to *Question*
 * *UserAnswer* - One of *PossibleAnswer*s selected by user
 * *RightAnswer* - right answer to *Question*, must be one of *PossibleAnswer*s
-* *RightAnswerPreviewDuration* - duration in millis how long *RightAnswer* and *StatisticsAnswers* will be displayed to *User* before replaced by next *Question* with *PossibleAnswer*s
-* *StatisticsAnswers* - contains statistics for *Question* based on *UserAnswer*s
-* *QuestionForm* - Displayed *Question* either with *PossibleAnswer*s to be answered or with *RightAnswer* and *StatisticsAnswer*s
-* *AtbResToUserAnswer* - Is sent by *ATB* as response to *UserAnswer*, contains *RightAnswer* and *StatisticsAnswers* for old *Question* and new *Question*
-
-
+* *StatisticsAnswer* - contains statistics for *Question* based on *UserAnswer*s
+* *RightAnswerWithStats* - is *RightAnswer* with *StatisticsAnswer*s
+* *RightAnswerWithStatsPreviewDuration* - duration in millis how long *RightAnswerWithStats* will be displayed to *User* before replaced by next *Question* with *PossibleAnswer*s
+* *QuestionForm* - Displayed *Question* either with *PossibleAnswer*s to be answered or with *RightAnswerWithStats*
+* *AtbResToUserAnswer* - Is sent by *ATB* as response to *UserAnswer*, contains *RightAnswerWithStats* for old *Question* and new *Question*
 
 
 When Application Start:

@@ -1,6 +1,6 @@
 import React from 'react';
 import reducers, {answers, questionForms} from "../../reducer";
-import {ADD_RIGHT_ANSWER, REMOVE_RIGHT_ANSWER} from "../../constants/actionTypes";
+import {ADD_RIGHT_ANSWER_WITH_STATS, REMOVE_RIGHT_ANSWER} from "../../constants/actionTypes";
 
 
 describe('all reducers initial state', () => {
@@ -20,10 +20,10 @@ describe('answers reducer initial state', () => {
     })
 })
 
-describe('answers ADD_RIGHT_ANSWER, state undefined', () => {
+describe('answers ADD_RIGHT_ANSWER_WITH_STATS, state undefined', () => {
     it('state should contain one answer', () => {
         const action = {
-            type: ADD_RIGHT_ANSWER,
+            type: ADD_RIGHT_ANSWER_WITH_STATS,
             questionId: "questionId",
             userAnswerResult: "userAnswerResult",
             statisticsAnswers: "statisticsAnswers"
@@ -38,7 +38,7 @@ describe('answers ADD_RIGHT_ANSWER, state undefined', () => {
     })
 })
 
-describe('answers ADD_RIGHT_ANSWER, state contains one question', () => {
+describe('answers ADD_RIGHT_ANSWER_WITH_STATS, state contains one question', () => {
     it('state should contain two questions', () => {
         const existingQuestion = {
             questionId: 'existingQuestionId',
@@ -47,7 +47,7 @@ describe('answers ADD_RIGHT_ANSWER, state contains one question', () => {
 
         }
         const action = {
-            type: ADD_RIGHT_ANSWER,
+            type: ADD_RIGHT_ANSWER_WITH_STATS,
             questionId: "questionId",
             userAnswerResult: "userAnswerResult",
             statisticsAnswers: "statisticsAnswers"
@@ -102,7 +102,7 @@ describe('questionForms ADD_QUESTION_FORM ', () => {
 
         }
         const action = {
-            type: ADD_RIGHT_ANSWER,
+            type: ADD_RIGHT_ANSWER_WITH_STATS,
             questionId: "questionId",
             userAnswerResult: "userAnswerResult",
             statisticsAnswers: "statisticsAnswers"
