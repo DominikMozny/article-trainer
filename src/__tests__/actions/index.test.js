@@ -44,7 +44,7 @@ describe('replaceQuestionForm', () => {
     })
 })
 
-describe('addRightAnswer', () => {
+describe('addRightAnswerWithStats', () => {
     it('should create action to add rightAnswer', () => {
         const atbResToUserAnswer = {
             questionId: 'some ID',
@@ -59,11 +59,11 @@ describe('addRightAnswer', () => {
             statisticsAnswers: atbResToUserAnswer.statisticsAnswers,
             nextQuestion: atbResToUserAnswer.nextQuestion
         }
-        expect(actions.addRightAnswer(atbResToUserAnswer)).toEqual(expectedAction)
+        expect(actions.addRightAnswerWithStats(atbResToUserAnswer)).toEqual(expectedAction)
     })
 })
 
-describe('removeRightAnswer', () => {
+describe('removeRightAnswerWithStats', () => {
     it('should create action to remove rightAnswer', () => {
         const atbResToUserAnswer = {
             questionId: 'some ID',
@@ -72,7 +72,7 @@ describe('removeRightAnswer', () => {
             type: REMOVE_RIGHT_ANSWER_WITH_STATS,
             questionId: atbResToUserAnswer.questionId,
         }
-        expect(actions.removeRightAnswer(atbResToUserAnswer)).toEqual(expectedAction)
+        expect(actions.removeRightAnswerWithStats(atbResToUserAnswer)).toEqual(expectedAction)
     })
 })
 

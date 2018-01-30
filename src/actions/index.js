@@ -22,7 +22,7 @@ export const replaceQuestionForm = (atbResToUserAnswer) => ({
     nextQuestion: atbResToUserAnswer.nextQuestion
 })
 
-export const addRightAnswer = (atbResToUserAnswer) => ({
+export const addRightAnswerWithStats = (atbResToUserAnswer) => ({
     type: ADD_RIGHT_ANSWER_WITH_STATS,
     questionId: atbResToUserAnswer.questionId,
     userAnswerResult: atbResToUserAnswer.userAnswerResult,
@@ -30,7 +30,7 @@ export const addRightAnswer = (atbResToUserAnswer) => ({
     nextQuestion: atbResToUserAnswer.nextQuestion
 })
 
-export const removeRightAnswer = (atbResToUserAnswer) => ({
+export const removeRightAnswerWithStats = (atbResToUserAnswer) => ({
     type: REMOVE_RIGHT_ANSWER_WITH_STATS,
     questionId: atbResToUserAnswer.questionId
 })
@@ -63,9 +63,9 @@ export const sendUserAnswer = (questionId, answer) => dispatch => {
     })
         .then(response => response.json())
         .then(json => {
-            dispatch(addRightAnswer(json))
+            dispatch(addRightAnswerWithStats(json))
             setTimeout(() => dispatch(replaceQuestionForm(json)), WAIT_BEFORE_NEW_QUESTION_IN_MS)
-            setTimeout(() => dispatch(removeRightAnswer(json)), WAIT_BEFORE_NEW_QUESTION_IN_MS)
+            setTimeout(() => dispatch(removeRightAnswerWithStats(json)), WAIT_BEFORE_NEW_QUESTION_IN_MS)
         })
         .catch(e => alert("Problem huston"))
 }
