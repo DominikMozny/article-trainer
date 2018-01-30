@@ -2,7 +2,6 @@ import React from 'react';
 import reducers, {answers, questionForms} from "../../reducer";
 import {ADD_RIGHT_ANSWER_WITH_STATS, REMOVE_RIGHT_ANSWER_WITH_STATS} from "../../constants/actionTypes";
 
-
 describe('all reducers initial state', () => {
     it('should return initial state', () => {
         expect(reducers(undefined, {})).toEqual(

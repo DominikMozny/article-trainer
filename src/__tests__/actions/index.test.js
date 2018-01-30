@@ -135,7 +135,7 @@ describe('send UserAnswer to ATB', () => {
 
         const expectedActionsBeforeReplacingQuestionForm = [
             {
-                "type": "ADD_RIGHT_ANSWER_WITH_STATS",
+                "type": ADD_RIGHT_ANSWER_WITH_STATS,
                 "nextQuestion": "nextQuestion",
                 "questionId": "questionId",
                 "statisticsAnswers": "statisticsAnswers",
@@ -144,19 +144,19 @@ describe('send UserAnswer to ATB', () => {
         ]
         const expectedActionsAfterReplacingQuestionForm = [
             {
-                "type": "ADD_RIGHT_ANSWER_WITH_STATS",
+                "type": ADD_RIGHT_ANSWER_WITH_STATS,
                 "nextQuestion": "nextQuestion",
                 "questionId": "questionId",
                 "statisticsAnswers": "statisticsAnswers",
                 "userAnswerResult": "userAnswerResult"
             },
             {
-                "type": "REPLACE_QUESTION_FORM",
+                "type": REPLACE_QUESTION_FORM,
                 "nextQuestion": "nextQuestion",
                 "previousId": "questionId"
             },
             {
-                "type": "REMOVE_RIGHT_ANSWER_WITH_STATS",
+                "type": REMOVE_RIGHT_ANSWER_WITH_STATS,
                 "questionId": "questionId"
             }
         ]
