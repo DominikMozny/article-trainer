@@ -5,7 +5,9 @@ import thunk from 'redux-thunk'
 import fetchMock from 'fetch-mock'
 import {QUESTION_FORMS, USER_ANSWER} from "../../constants/urls";
 import {
-    ADD_QUESTION_FORM, ADD_RIGHT_ANSWER, REMOVE_RIGHT_ANSWER,
+    ADD_QUESTION_FORM,
+    ADD_RIGHT_ANSWER,
+    REMOVE_RIGHT_ANSWER,
     REPLACE_QUESTION_FORM
 } from "../../constants/actionTypes";
 import {WAIT_BEFORE_NEW_QUESTION_IN_MS} from "../../constants/staticConfiguration";
