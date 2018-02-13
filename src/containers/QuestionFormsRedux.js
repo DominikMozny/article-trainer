@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import QuestionsAndAnswers from "../components/QuestionForms";
+import QuestionForms from "../components/QuestionForms";
 import {sendUserAnswer} from "../actions/index";
 
 const mapStateToProps = (state) => ({
@@ -11,6 +11,6 @@ const mapDispatchToProps = {
     onClickAnswerButton: sendUserAnswer
 }
 
-const QuestionFormsRedux = connect(mapStateToProps, mapDispatchToProps)(QuestionsAndAnswers)
+const QuestionFormsRedux = connect(mapStateToProps, mapDispatchToProps)(QuestionForms)
 
 export default QuestionFormsRedux
