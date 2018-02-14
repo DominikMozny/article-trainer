@@ -12,14 +12,15 @@ const answerButtons = (atbResToUserAnswer, questionForm, onClickAnswerButton) =>
 
 const statisticsAnswers = (atbResToUserAnswer) => {
     return !atbResToUserAnswer ? null : <div style={{display: 'inline-block'}}>
-        {atbResToUserAnswer.statisticsAnswers.map((statisticsAnswer) =>
-            statistics(statisticsAnswer)
+        {atbResToUserAnswer.statisticsAnswers.map((statisticsAnswer, index) =>
+            statistics(statisticsAnswer, index)
         )}
     </div>
 }
 
-const statistics = (statisticsAnswer) => {
-    return <div className="statistics" style={{backgroundColor: getStatisticsColor(statisticsAnswer.correct)}}>
+const statistics = (statisticsAnswer, index) => {
+    return <div key={index} className="statistics"
+                style={{backgroundColor: getStatisticsColor(statisticsAnswer.correct)}}>
         {statisticsAnswer.userAnswer}
     </div>
 }
