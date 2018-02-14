@@ -61,7 +61,6 @@ const QuestionForm = ({questionForm, atbResToUserAnswer, onClickAnswerButton}) =
         </div>
         {statisticsAnswers(atbResToUserAnswer)}
         {showCountdown(atbResToUserAnswer)}
-
     </div>
 )
 
