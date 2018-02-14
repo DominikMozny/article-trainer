@@ -34,7 +34,7 @@ const getStatisticsColor = (rightAnswer) => {
 
 const getBgColor = (answer) => {
     if (answer) {
-        if (answer.result) {
+        if (answer.userAnswerResult) {
             return 'LightGreen';
         } else {
             return 'LightPink';
