@@ -50,13 +50,13 @@ const showCountdown = (answer) => {
     return "";
 }
 
-const QuestionForm = ({question, answer, onClickAnswerButton}) => (
+const QuestionForm = ({questionForm, answer, onClickAnswerButton}) => (
     <div className="questionOuter" style={{backgroundColor: getBgColor(answer)}}>
         <div className="questionInner" style={{display: 'inline-block'}}>
-            {question.question}
+            {questionForm.question}
         </div>
         <div style={{display: 'inline-block'}}>
-            {answerButtons(answer, question, onClickAnswerButton)}
+            {answerButtons(answer, questionForm, onClickAnswerButton)}
         </div>
         {statisticsAnswers(answer)}
         {showCountdown(answer)}
