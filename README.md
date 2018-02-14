@@ -1,6 +1,6 @@
 Dictionary:
-* *AT* article-trainer application (this application)
-* *ATB* article-trainer-backup application
+* *AT* - article-trainer application (this application)
+* *ATB* - article-trainer-backup application
 * *User* - Person using AT
 * *Question* - Displayed question to be answered
 * *PossibleAnswer* - One of answers displayed next to *Question*
