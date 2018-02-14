@@ -1,4 +1,4 @@
-.questionOuter {
+.questionForm {
     display: flex;
     justify-content: space-between;
     width: 480px;
@@ -11,7 +11,7 @@
     padding: 4px;
 }
 
-.answerButton {
+.possibleAnswer {
     padding: 1px;
     width: 30px;
     background-color: WhiteSmoke;

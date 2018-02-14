@@ -3,8 +3,8 @@ import CountdownTimer from "./CountdownTimer";
 
 const answerButtons = (atbResToUserAnswer, questionForm, onClickAnswerButton) => {
     return atbResToUserAnswer ? null : questionForm.possibleAnswers.map((possibleAnswer) =>
-        <div style={{display: 'inline-block'}}>
-            <button className="answerButton"
+        <div style={{display: 'inline-block'}} key={possibleAnswer}>
+            <button className="possibleAnswer"
                     onClick={() => onClickAnswerButton(questionForm.id, possibleAnswer)}>{possibleAnswer}</button>
         </div>
     )
@@ -51,7 +51,7 @@ const showCountdown = (atbResToUserAnswer) => {
 }
 
 const QuestionForm = ({questionForm, atbResToUserAnswer, onClickAnswerButton}) => (
-    <div className="questionOuter" style={{backgroundColor: getBgColor(atbResToUserAnswer)}}>
+    <div className="questionForm" style={{backgroundColor: getBgColor(atbResToUserAnswer)}}>
         <div className="question" style={{display: 'inline-block'}}>
             {questionForm.question}
         </div>

@@ -4,7 +4,7 @@ import QuestionForm from "./QuestionForm";
 const getQuestions = (questionForms, atbResToUserAnswers, onClickAnswerButton) => {
     const answerMap = new Map(atbResToUserAnswers.map((i) => [i.questionId, i]))
     return questionForms.map((questionForm) =>
-        <div>
+        <div key={questionForm.id}>
             <QuestionForm questionForm={questionForm}
                           onClickAnswerButton={onClickAnswerButton}
                           atbResToUserAnswer={answerMap.get(questionForm.id)}/>
