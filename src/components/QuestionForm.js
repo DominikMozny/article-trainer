@@ -19,7 +19,7 @@ const statisticsAnswers = (atbResToUserAnswer) => {
 }
 
 const statistics = (statisticsAnswer, index) => {
-    return <div key={index} className="statistics"
+    return <div key={index} className="statisticsAnswer"
                 style={{backgroundColor: getStatisticsColor(statisticsAnswer.correct)}}>
         {statisticsAnswer.userAnswer}
     </div>
