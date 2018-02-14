@@ -1,5 +1,5 @@
 import React from 'react';
-import reducers, {answers, questionForms} from "../../reducer";
+import reducers, {atbResToUserAnswers, questionForms} from "../../reducer";
 import {
     ADD_QUESTION_FORM,
     ADD_RIGHT_ANSWER_WITH_STATS,
@@ -18,7 +18,7 @@ describe('all reducers initial state', () => {
 
 describe('answers reducer initial state', () => {
     it('state should be empty', () => {
-        expect(answers(undefined, {})).toEqual(
+        expect(atbResToUserAnswers(undefined, {})).toEqual(
             []
         )
     })
@@ -32,7 +32,7 @@ describe('answers ADD_RIGHT_ANSWER_WITH_STATS, state undefined', () => {
             userAnswerResult: "userAnswerResult",
             statisticsAnswers: "statisticsAnswers"
         }
-        expect(answers(undefined, action)).toEqual([
+        expect(atbResToUserAnswers(undefined, action)).toEqual([
             {
                 questionId: action.questionId,
                 userAnswerResult: action.userAnswerResult,
@@ -56,7 +56,7 @@ describe('answers ADD_RIGHT_ANSWER_WITH_STATS, state contains one question', () 
             userAnswerResult: "userAnswerResult",
             statisticsAnswers: "statisticsAnswers"
         }
-        expect(answers([existingQuestion], action)).toEqual([
+        expect(atbResToUserAnswers([existingQuestion], action)).toEqual([
             {
                 questionId: existingQuestion.questionId,
                 userAnswerResult: existingQuestion.userAnswerResult,
@@ -85,7 +85,7 @@ describe('answers REMOVE_RIGHT_ANSWER_WITH_STATS, state contains one question', 
             userAnswerResult: state.userAnswerResult,
             statisticsAnswers: state.statisticsAnswers
         }
-        expect(answers([state], action)).toEqual([])
+        expect(atbResToUserAnswers([state], action)).toEqual([])
     })
 })
 

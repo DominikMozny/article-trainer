@@ -7,7 +7,7 @@ import {
     UPDATE_CONFIG_STATUS
 } from "../constants/actionTypes";
 
-export const answers = (state = [], action) => {
+export const atbResToUserAnswers = (state = [], action) => {
     switch (action.type) {
         case ADD_RIGHT_ANSWER_WITH_STATS:
             return [
@@ -59,6 +59,6 @@ export const configStatus = (status = "", action) => {
     }
 }
 
-const reducers = combineReducers({answers, questionForms, configStatus})
+const reducers = combineReducers({atbResToUserAnswers, questionForms, configStatus})
 
 export default reducers
